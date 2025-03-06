@@ -5,10 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
-  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && babel src --out-dir dist && npm run copy-assets",
+    "build": "babel src --out-dir dist && npm run copy-assets",
     "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* dist/",
     "postinstall": "npm run build"
   },
