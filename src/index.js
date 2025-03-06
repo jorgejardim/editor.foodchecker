@@ -160,3 +160,4 @@ if (typeof exports !== "undefined") {
     exports.default = Editor; // Compatível com import ESModules
 }
 export default Editor; // ESModules moderno
+export { Editor };
