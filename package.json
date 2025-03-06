@@ -15,8 +15,15 @@
     "@editorjs/header": "^2.8.8",
     "@editorjs/image": "^2.10.2",
     "@editorjs/list": "^2.0.6",
+    "@editorjs/marker": "^1.4.0",
     "@editorjs/paragraph": "^2.11.7",
-    "@editorjs/table": "^2.4.3"
+    "@editorjs/table": "^2.4.3",
+    "@editorjs/underline": "^1.2.1",
+    "@sotaproject/strikethrough": "^1.0.1",
+    "editor-js-alignment-tune": "^1.0.1",
+    "editorjs-html": "^4.0.5",
+    "editorjs-indent-tune": "^1.4.1",
+    "editorjs-text-color-plugin": "github:dariox64/editorjs-text-color-plugin"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",
