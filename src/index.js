@@ -1,7 +1,8 @@
 import './assets/editor-custom.css';
 
-import {editorJsPtBR} from "./i18n/pt-BR.js";
 import EditorJS from '@editorjs/editorjs';
+import customHtmlParser from "./plugins/customHtmlParser.js";
+import { editorJsPtBR } from "./i18n/pt-BR.js";
 
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
@@ -14,7 +15,6 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextColorPlugin from 'editorjs-text-color-plugin';
 import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
-import customHtmlParser from "./plugins/customHtmlParser.js";
 
 export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
