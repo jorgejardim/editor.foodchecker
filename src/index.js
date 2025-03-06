@@ -18,7 +18,7 @@ import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
 import ChangeCase from 'editorjs-change-case';
 
-export default class Editor {
+class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
         this.htmlParser = customHtmlParser;
 
@@ -154,3 +154,9 @@ export default class Editor {
         return sanitized.trim();
     }
 }
+
+if (typeof exports !== "undefined") {
+    module.exports = Editor; // CommonJS (Node.js e Webpack)
+    exports.default = Editor; // Compatível com import ESModules
+}
+export default Editor; // ESModules moderno
