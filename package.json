@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "babel src --out-dir dist && npm run copy-assets && tsc",
+    "build": "tsc && babel src --out-dir dist && npm run copy-assets",
     "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* dist/",
     "postinstall": "npm run build"
   },
