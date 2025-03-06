@@ -155,9 +155,4 @@ class Editor {
     }
 }
 
-if (typeof exports !== "undefined") {
-    module.exports = Editor; // CommonJS (Node.js e Webpack)
-    exports.default = Editor; // Compatível com import ESModules
-}
-export default Editor; // ESModules moderno
-export { Editor };
+export default Editor;
