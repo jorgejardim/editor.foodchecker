@@ -2,7 +2,7 @@ import './assets/editor-custom.css';
 
 import EditorJS from '@editorjs/editorjs';
 // import customHtmlParser from "./plugins/customHtmlParser.js";
-// import { editorJsPtBR } from "./i18n/pt-BR.js";
+import { editorJsPtBR } from "./i18n/pt-BR.js";
 
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
@@ -101,9 +101,9 @@ export default class Editor {
                     onChangeCallback();
                 }
             },
-            // i18n: {
-            //     messages: editorJsPtBR
-            // },
+            i18n: {
+                messages: editorJsPtBR
+            },
         });
     }
 
