@@ -1,9 +1,10 @@
 import './assets/editor-custom.css';
 
 import EditorJS from '@editorjs/editorjs';
-import customHtmlParser from "./plugins/customHtmlParser.js";
-import {editorJsPtBR} from "./i18n/pt-BR.js";
+import customHtmlParser from './plugins/customHtmlParser.js';
+import { editorJsPtBR } from './i18n/pt-BR.js';
 
+import DOMPurify from 'dompurify';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import ImageTool from '@editorjs/image';
@@ -15,7 +16,7 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextColorPlugin from 'editorjs-text-color-plugin';
 import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
-import DOMPurify from 'dompurify';
+import ChangeCase from 'editorjs-change-case';
 
 export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
@@ -27,48 +28,23 @@ export default class Editor {
             tools: {
                 header: {
                     class: Header,
-                    inlineToolbar: ['link', 'textColor'],
+                    inlineToolbar: ['link', 'textColor', 'changeCase'],
                     config: {
                         levels: [1, 2, 3, 4, 5, 6],
                         defaultLevel: 2
                     },
-                    sanitize: { // Remove atributos indesejados automaticamente
-                        a: {
-                            href: true
-                        },
-                        span: false, // Remove todos os atributos de <span>
-                        class: false,
-                        style: false
-                    }
                 },
                 paragraph: {
                     class: Paragraph,
-                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor'],
-                    sanitize: { // Remove atributos indesejados automaticamente
-                        a: {
-                            href: true
-                        },
-                        span: false, // Remove todos os atributos de <span>
-                        class: false,
-                        style: false
-                    }
-
+                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase'],
                 },
                 list: {
                     class: List,
-                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor'],
+                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase'],
                     config: {
                         defaultStyle: 'unordered',
                         counterTypes: ['numeric', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha'],
                         allowedStyles: ['ordered', 'unordered']
-                    },
-                    sanitize: { // Remove atributos indesejados automaticamente
-                        a: {
-                            href: true
-                        },
-                        span: false, // Remove todos os atributos de <span>
-                        class: false,
-                        style: false
                     }
                 },
                 image: {
@@ -118,6 +94,14 @@ export default class Editor {
                         default: "left"
                     },
                 },
+                changeCase: {
+                    class: ChangeCase,
+                    config: {
+                        title: 'Alterar Caixa',
+                        showLocaleOption: false,
+                        locale: 'pt-BR'
+                    }
+                }
             },
             data: initialData,
             onChange: async () => {

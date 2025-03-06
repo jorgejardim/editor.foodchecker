@@ -117,6 +117,16 @@ export const editorJsPtBR = {
             'Stretch': 'Esticar',
             'Collapse': 'Colapsar',
         },
+        changeCase: {
+            'titleCase': 'Título Maiúsculo',
+            'lowerCase': 'minúsculas',
+            'upperCase': 'MAIÚSCULAS',
+            'localeLowerCase': 'minúsculas localizadas',
+            'localeUpperCase': 'MAIÚSCULAS LOCALIZADAS',
+            'sentenceCase': 'Caso de sentença',
+            'toggleCase': 'Alternar Maiúsculas/Minúsculas',
+            'ChangeCase': 'Mudar Caixa',
+        },
     },
     blockTunes: {
         'delete': {

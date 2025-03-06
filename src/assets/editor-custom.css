@@ -16,7 +16,7 @@
     margin: 0  !important;
 }
 
-.ce-popover-item-html div {
+.ce-popover-item-html div:not(.change-case-action) {
     display: flex  !important;
     justify-content: space-between  !important;
 }
@@ -35,4 +35,13 @@
 
 .image-tool__image-picture {
     display: inline-block !important;
+}
+
+.ce-popover-item-html[data-item-name="changeCase"] svg {
+    fill: #000000 !important;
+    color: transparent;
+}
+
+.ce-popover-item-html[data-item-name="changeCase"] {
+    padding-top: 2px;
 }
