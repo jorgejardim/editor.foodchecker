@@ -4,11 +4,12 @@
   "description": "Editor.js pré-configurado",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "babel src --out-dir dist && npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* dist/",
+    "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* src/index.d.ts dist/",
     "postinstall": "npm run build"
   },
   "dependencies": {
