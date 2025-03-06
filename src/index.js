@@ -155,6 +155,9 @@ class Editor {
     }
 }
 
+// 🔹 FORÇAR O WEBPACK A MANTER ESSA EXPORTAÇÃO
 const _Editor = Editor;
-export { _Editor as default };
+
+// ✅ Evita remoção pelo Angular em produção
+export default _Editor;
 export { Editor };
