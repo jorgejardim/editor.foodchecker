@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "sideEffects": ["./dist/index.js"],
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "babel src --out-dir dist && npm run copy-assets",

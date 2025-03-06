@@ -18,7 +18,7 @@ import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
 import ChangeCase from 'editorjs-change-case';
 
-class Editor {
+export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
         this.htmlParser = customHtmlParser;
 
@@ -154,10 +154,3 @@ class Editor {
         return sanitized.trim();
     }
 }
-
-// 🔹 FORÇAR O WEBPACK A MANTER ESSA EXPORTAÇÃO
-const _Editor = Editor;
-
-// ✅ Evita remoção pelo Angular em produção
-export default _Editor;
-export { Editor };
