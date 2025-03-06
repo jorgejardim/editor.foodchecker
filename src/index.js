@@ -2,7 +2,7 @@ import './assets/editor-custom.css';
 
 import EditorJS from '@editorjs/editorjs';
 import customHtmlParser from "./plugins/customHtmlParser.js";
-import { editorJsPtBR } from "./i18n/pt-BR.js";
+import {editorJsPtBR} from "./i18n/pt-BR.js";
 
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
@@ -15,12 +15,11 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextColorPlugin from 'editorjs-text-color-plugin';
 import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
-import EditorJsHtml from "editorjs-html";
+import DOMPurify from 'dompurify';
 
 export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
         this.htmlParser = customHtmlParser;
-        // this.htmlParser = EditorJsHtml();
 
         this.editor = new EditorJS({
             holder: holderId,
@@ -32,11 +31,28 @@ export default class Editor {
                     config: {
                         levels: [1, 2, 3, 4, 5, 6],
                         defaultLevel: 2
+                    },
+                    sanitize: { // Remove atributos indesejados automaticamente
+                        a: {
+                            href: true
+                        },
+                        span: false, // Remove todos os atributos de <span>
+                        class: false,
+                        style: false
                     }
                 },
                 paragraph: {
                     class: Paragraph,
                     inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor'],
+                    sanitize: { // Remove atributos indesejados automaticamente
+                        a: {
+                            href: true
+                        },
+                        span: false, // Remove todos os atributos de <span>
+                        class: false,
+                        style: false
+                    }
+
                 },
                 list: {
                     class: List,
@@ -45,6 +61,14 @@ export default class Editor {
                         defaultStyle: 'unordered',
                         counterTypes: ['numeric', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha'],
                         allowedStyles: ['ordered', 'unordered']
+                    },
+                    sanitize: { // Remove atributos indesejados automaticamente
+                        a: {
+                            href: true
+                        },
+                        span: false, // Remove todos os atributos de <span>
+                        class: false,
+                        style: false
                     }
                 },
                 image: {
@@ -107,8 +131,18 @@ export default class Editor {
         });
     }
 
-    save() {
-        return this.editor.save();
+    async save() {
+        const data = await this.editor.save();
+
+        // Sanitizar cada bloco de texto antes de salvar
+        data.blocks = data.blocks.map(block => {
+            if (block.type === "paragraph" || block.type === "list") {
+                block.data.text = this.cleanHtml(block.data.text);
+            }
+            return block;
+        });
+
+        return data;
     }
 
     async saveHtml() {
@@ -120,5 +154,19 @@ export default class Editor {
         }
 
         return htmlOutput;
+    }
+
+    cleanHtml(inputHtml) {
+        let sanitized = DOMPurify.sanitize(inputHtml, {
+            ALLOWED_TAGS: ['p', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li', 'br', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
+            ALLOWED_ATTR: ['href'],
+        });
+
+        sanitized = sanitized.replace(/&nbsp;/g, ' ');
+        sanitized = sanitized.replace(/\n{2,}/g, '\n');
+        sanitized = sanitized.replace(/\s{2,}/g, ' ');
+        sanitized = sanitized.replace(/>\s+</g, '><');
+
+        return sanitized.trim();
     }
 }

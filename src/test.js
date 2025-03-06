@@ -22,6 +22,7 @@ window.contentSave = async function() {
 
     localStorage.setItem('editorJsContentTest', JSON.stringify(dataJson));
     console.log("Conteúdo salvo:", dataJson);
+    console.log("HTML salvo:", dataHtml);
 };
 
 // Função para salvar o conteúdo do editor com debounce
