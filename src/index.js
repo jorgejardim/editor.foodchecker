@@ -155,5 +155,6 @@ class Editor {
     }
 }
 
-export default Editor;
+const _Editor = Editor;
+export { _Editor as default };
 export { Editor };
