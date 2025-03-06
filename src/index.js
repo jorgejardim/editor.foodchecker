@@ -1,8 +1,8 @@
 import './assets/editor-custom.css';
 
 import EditorJS from '@editorjs/editorjs';
-import customHtmlParser from "./plugins/customHtmlParser.js";
-import { editorJsPtBR } from "./i18n/pt-BR.js";
+// import customHtmlParser from "./plugins/customHtmlParser.js";
+// import { editorJsPtBR } from "./i18n/pt-BR.js";
 
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
@@ -15,10 +15,12 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextColorPlugin from 'editorjs-text-color-plugin';
 import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
+import EditorJsHtml from "editorjs-html";
 
 export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
-        this.htmlParser = customHtmlParser;
+        // this.htmlParser = customHtmlParser;
+        this.htmlParser = EditorJsHtml();
 
         this.editor = new EditorJS({
             holder: holderId,
@@ -99,9 +101,9 @@ export default class Editor {
                     onChangeCallback();
                 }
             },
-            i18n: {
-                messages: editorJsPtBR
-            },
+            // i18n: {
+            //     messages: editorJsPtBR
+            // },
         });
     }
 

@@ -2,4 +2,4 @@
 npm run dev
 
 # Instalação
-npm install @editorjs/editorjs@github:jorgejardim/editor.foodchecker
+npm install github:jorgejardim/editor.foodchecker
