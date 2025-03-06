@@ -1,6 +1,5 @@
 import './assets/editor-custom.css';
 
-import EditorJsHtml from 'editorjs-html';
 import {editorJsPtBR} from "./i18n/pt-BR.js";
 import EditorJS from '@editorjs/editorjs';
 
