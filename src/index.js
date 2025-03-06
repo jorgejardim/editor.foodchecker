@@ -1,7 +1,7 @@
 import './assets/editor-custom.css';
 
 import EditorJS from '@editorjs/editorjs';
-// import customHtmlParser from "./plugins/customHtmlParser.js";
+import customHtmlParser from "./plugins/customHtmlParser.js";
 import { editorJsPtBR } from "./i18n/pt-BR.js";
 
 import Header from '@editorjs/header';
@@ -19,8 +19,8 @@ import EditorJsHtml from "editorjs-html";
 
 export default class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
-        // this.htmlParser = customHtmlParser;
-        this.htmlParser = EditorJsHtml();
+        this.htmlParser = customHtmlParser;
+        // this.htmlParser = EditorJsHtml();
 
         this.editor = new EditorJS({
             holder: holderId,
