@@ -156,3 +156,4 @@ class Editor {
 }
 
 export default Editor;
+export { Editor };
