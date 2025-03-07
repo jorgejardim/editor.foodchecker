@@ -10,8 +10,8 @@ window.contentSave = async function() {
     const dataHtml = await editor.saveHtml();
 
     localStorage.setItem('editorJsContentTest', JSON.stringify(dataJson));
-    console.log("Conteúdo salvo:", dataJson);
-    console.log("HTML salvo:", dataHtml);
+    // console.log("Conteúdo salvo:", dataJson);
+    // console.log("HTML salvo:", dataHtml);
 
     // Enviar atualização para a janela pai
     window.parent.postMessage({ type: "update", data: dataJson, dataHtml: dataHtml }, "*");
@@ -75,8 +75,28 @@ if (urlParams.get('dev') || import.meta.env.MODE === 'development') {
     const savedData = localStorage.getItem('editorJsContentTest');
     const initialData = savedData ? JSON.parse(savedData) : null;
     inicializarEditor(initialData);
+    document.body.classList.add('editorjs-dev');
 
 // Solicita o conteúdo para a janela pai
 } else {
     window.parent.postMessage({ type: "get" }, "*");
 }
+
+// Adiciona um listener para a tecla Shift + Enter
+addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.shiftKey) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            const br = document.createElement('br');
+            range.insertNode(br);
+            range.setStartAfter(br);
+            range.setEndAfter(br);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+}, true);

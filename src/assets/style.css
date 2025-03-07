@@ -7,6 +7,14 @@ body {
     overflow-y: hidden;
 }
 
+body.editorjs-dev {
+    overflow-y: auto;
+}
+
+div[data-focused] .ce-block__content {
+    background-color: #f0f8ff;
+}
+
 .ce-popover-indent-item {
     border-top: 1px solid #eff0f1  !important;
     border-bottom: 1px solid #eff0f1  !important;

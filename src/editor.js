@@ -85,6 +85,9 @@ class Editor {
                 indentTune: {
                     class: IndentTune,
                     version: EditorJS.version,
+                    config: {
+                        handleShortcut: false,
+                    }
                 },
                 alignmentTune: {
                     class: AlignmentTuneTool,
