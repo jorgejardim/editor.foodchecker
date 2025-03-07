@@ -53,6 +53,9 @@ window.addEventListener("message", (event) => {
     if (event.data.type === "init") {
         inicializarEditor(event.data.data);
     }
+    if (event.data.type === "get") {
+        contentSave();
+    }
 });
 
 // Função para enviar a altura atual do iframe para a janela pai
@@ -69,4 +72,8 @@ if (urlParams.get('dev') || import.meta.env.MODE === 'development') {
     const savedData = localStorage.getItem('editorJsContentTest');
     const initialData = savedData ? JSON.parse(savedData) : null;
     inicializarEditor(initialData);
+
+// Solicita o conteúdo para a janela pai
+} else {
+    window.parent.postMessage({ type: "get" }, "*");
 }
