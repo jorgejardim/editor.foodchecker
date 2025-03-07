@@ -1,5 +1,5 @@
-:root {
-    --color-border: #000000 !important;
+body {
+    overflow-y: hidden;
 }
 
 .ce-popover-indent-item {
