@@ -17,7 +17,7 @@
     "dev": "vite",
     "build": "babel src --out-dir dist && npm run copy-assets",
     "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* src/index.d.ts dist/",
-    "postinstall": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@editorjs/editorjs": "^2.30.8",
