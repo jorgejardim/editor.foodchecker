@@ -5,7 +5,7 @@ export default {
       usePolling: true, // Garante que as mudanças sejam detectadas
     },
     strictPort: false, // Permite que o Vite encontre outra porta disponível
-    open: true, // Abre o navegador automaticamente ao iniciar
+    open: false, // Abre o navegador automaticamente ao iniciar
     hmr: {
       overlay: false, // Evita que o overlay de erro do Vite trave a tela
     }
