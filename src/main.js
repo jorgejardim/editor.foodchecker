@@ -42,6 +42,9 @@ async function byFile(file) {
 
 // Função para inicializar o editor
 function inicializarEditor(initialData) {
+    if (editor) {
+        editor.destroy();
+    }
     editor = new Editor('editorjs', initialData, byFile, debouncedSave);
 
     // Adiciona um listener para mudanças no conteúdo do Editor.js
