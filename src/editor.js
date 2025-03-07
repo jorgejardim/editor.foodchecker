@@ -1,5 +1,3 @@
-import './assets/editor-custom.css';
-
 import EditorJS from '@editorjs/editorjs';
 import customHtmlParser from './plugins/customHtmlParser.js';
 import { editorJsPtBR } from './i18n/pt-BR.js';

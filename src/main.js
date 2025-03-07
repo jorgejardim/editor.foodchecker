@@ -1,15 +1,7 @@
 import Editor from './editor.js';
 
-// Timeout para salvamento debounce
 let saveTimeout;
-
-// Carrega o conteúdo salvo no localStorage
-const savedData = localStorage.getItem('editorJsContentTest');
-const initialData = savedData ? JSON.parse(savedData) : null;
-
-// Elementos de saída
-const outputJson = document.getElementById("content-json");
-const outputHtml = document.getElementById("content-html");
+let editor;
 
 // Função para salvar o conteúdo do editor
 window.contentSave = async function() {
@@ -17,12 +9,12 @@ window.contentSave = async function() {
     const dataJson = await editor.save();
     const dataHtml = await editor.saveHtml();
 
-    outputJson.innerHTML = JSON.stringify(dataJson, null, 2);
-    outputHtml.innerHTML = dataHtml;
-
     localStorage.setItem('editorJsContentTest', JSON.stringify(dataJson));
-    // console.log("Conteúdo salvo:", dataJson);
-    // console.log("HTML salvo:", dataHtml);
+    console.log("Conteúdo salvo:", dataJson);
+    console.log("HTML salvo:", dataHtml);
+
+    // Enviar atualização para a janela pai
+    window.parent.postMessage({ type: "update", data: dataJson, dataHtml: dataHtml }, "*");
 };
 
 // Função para salvar o conteúdo do editor com debounce
@@ -48,5 +40,33 @@ async function byFile(file) {
     });
 }
 
-// Inicializa o editor
-const editor = new Editor('editorjs', initialData, byFile, debouncedSave);
+// Função para inicializar o editor
+function inicializarEditor(initialData) {
+    editor = new Editor('editorjs', initialData, byFile, debouncedSave);
+
+    // Adiciona um listener para mudanças no conteúdo do Editor.js
+    setInterval(contentHeight, 500);
+}
+
+// Evento para receber mensagens do iframe
+window.addEventListener("message", (event) => {
+    if (event.data.type === "init") {
+        inicializarEditor(event.data.data);
+    }
+});
+
+// Função para enviar a altura atual do iframe para a janela pai
+function contentHeight() {
+    const height = document.body.scrollHeight;
+    const width = document.body.scrollWidth;
+
+    window.parent.postMessage({ type: "resize", width: width, height: height }, "*");
+}
+
+// Verifica se está em modo de desenvolvimento e carrega o conteúdo salvo
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('dev') || import.meta.env.MODE === 'development') {
+    const savedData = localStorage.getItem('editorJsContentTest');
+    const initialData = savedData ? JSON.parse(savedData) : null;
+    inicializarEditor(initialData);
+}

@@ -3,91 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste do Meu EditorJS</title>
-    <style>
-        .container {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-
-        .title {
-            color: #333;
-        }
-
-        .editor-container {
-            width: 80%;
-            max-width: 800px;
-            min-height: 300px;
-            margin: 20px auto;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background: white;
-            text-align: left;
-        }
-
-        .btn-save {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .btn-save:hover {
-            background: #0056b3;
-        }
-
-        .subtitle {
-            margin-top: 20px;
-            color: #444;
-        }
-
-        .output-container {
-            width: 80%;
-            max-width: 800px;
-            margin: 10px auto;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .json-output {
-            width: 80%;
-            max-width: 800px;
-            margin: 10px auto;
-            padding: 10px;
-            background: #282c34;
-            color: #ffffff;
-            border-radius: 8px;
-            text-align: left;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
+    <title>EditorJS - Food Checker</title>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body class="container">
-<h2 class="title">Testando Editor.js</h2>
-
-<div id="editorjs" class="editor-container"></div>
-
-<button onclick="contentSave()" class="btn-save">Salvar Conteúdo</button>
-
-<h3 class="subtitle">Conteúdo Salvo - HTML:</h3>
-<div id="content-html" class="output-container"></div>
-
-<h3 class="subtitle">Conteúdo Salvo - JSON:</h3>
-<pre id="content-json" class="json-output"></pre>
-
-<script type="module" src="./main.js"></script>
+    <div id="editorjs" class="editor-container"></div>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
