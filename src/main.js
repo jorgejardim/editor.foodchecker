@@ -1,4 +1,4 @@
-import Editor from './src/index.js';
+import Editor from './editor.js';
 
 // Timeout para salvamento debounce
 let saveTimeout;

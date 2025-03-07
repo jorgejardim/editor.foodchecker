@@ -1,23 +1,11 @@
 {
-  "name": "foodchecker-editorjs",
+  "name": "foodchecker-editor",
   "version": "1.0.0",
   "description": "Editor.js pré-configurado",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    }
-  },
-  "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "babel src --out-dir dist && npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 src/assets/**/* src/i18n/**/* src/plugins/**/* src/index.d.ts dist/",
-    "prepublishOnly": "npm run build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@editorjs/editorjs": "^2.30.8",

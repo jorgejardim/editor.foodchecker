@@ -1,4 +1,11 @@
-export default {
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  root: 'src',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true
+  },
   server: {
     port: 3000, // Porta padrão inicial
     watch: {
@@ -10,4 +17,4 @@ export default {
       overlay: false, // Evita que o overlay de erro do Vite trave a tela
     }
   }
-};
+});
