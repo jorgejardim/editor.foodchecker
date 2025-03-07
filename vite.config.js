@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: 'src',
+  root: 'src', // Diretório raiz do projeto
   build: {
-    outDir: '../dist',
-    emptyOutDir: true
+    outDir: '../dist', // Diretório de saída
+    emptyOutDir: true, // Limpa o diretório de saída antes de construir
   },
   server: {
     port: 3000, // Porta padrão inicial
