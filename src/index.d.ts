@@ -1,4 +1,4 @@
-declare class Editor {
+export default class Editor {
     constructor(
         holderId: string,
         initialData?: any,
@@ -9,5 +9,3 @@ declare class Editor {
     save(): Promise<any>;
     saveHtml(): Promise<string>;
 }
-
-export default Editor;

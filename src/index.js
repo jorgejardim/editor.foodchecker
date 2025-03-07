@@ -18,7 +18,7 @@ import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
 import ChangeCase from 'editorjs-change-case';
 
-export default class Editor {
+class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
         this.htmlParser = customHtmlParser;
 
@@ -154,3 +154,5 @@ export default class Editor {
         return sanitized.trim();
     }
 }
+
+export { Editor as default };
