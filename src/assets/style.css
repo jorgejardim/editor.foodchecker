@@ -7,6 +7,10 @@ body {
     overflow-y: hidden;
 }
 
+.editor-container {
+
+}
+
 body.editorjs-dev {
     overflow-y: auto;
 }

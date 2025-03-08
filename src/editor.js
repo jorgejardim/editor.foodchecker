@@ -93,7 +93,7 @@ class Editor {
                 alignmentTune: {
                     class: AlignmentTuneTool,
                     config:{
-                        default: "left"
+                        default: "justify"
                     },
                 },
                 changeCase: {
