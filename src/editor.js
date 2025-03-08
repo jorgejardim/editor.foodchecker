@@ -14,7 +14,8 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextColorPlugin from 'editorjs-text-color-plugin';
 import IndentTune from 'editorjs-indent-tune';
 import AlignmentTuneTool from 'editor-js-alignment-tune';
-import ChangeCase from 'editorjs-change-case';
+import PlaceholderTool from './plugins/placeholderTool';
+import CustomChangeCase from './plugins/customChangeCase';
 
 class Editor {
     constructor(holderId, initialData, uploadByFile, onChangeCallback) {
@@ -26,7 +27,7 @@ class Editor {
             tools: {
                 header: {
                     class: Header,
-                    inlineToolbar: ['link', 'textColor', 'changeCase'],
+                    inlineToolbar: ['link', 'textColor', 'changeCase', 'placeholderTool'],
                     config: {
                         levels: [1, 2, 3, 4, 5, 6],
                         defaultLevel: 2
@@ -34,11 +35,11 @@ class Editor {
                 },
                 paragraph: {
                     class: Paragraph,
-                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase'],
+                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase', 'placeholderTool'],
                 },
                 list: {
                     class: List,
-                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase'],
+                    inlineToolbar: ['link', 'bold', 'italic', 'marker', 'underline', 'strikethrough', 'textColor', 'changeCase', 'placeholderTool'],
                     config: {
                         defaultStyle: 'unordered',
                         counterTypes: ['numeric', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha'],
@@ -96,13 +97,19 @@ class Editor {
                     },
                 },
                 changeCase: {
-                    class: ChangeCase,
+                    class: CustomChangeCase,
                     config: {
                         title: 'Alterar Caixa',
                         showLocaleOption: false,
-                        locale: 'pt-BR'
+                        locale: 'pt-BR',
                     }
-                }
+                },
+                placeholderTool: {
+                    class: PlaceholderTool,
+                    config: {
+                        title: 'Ahhha',
+                    }
+                },
             },
             data: initialData,
             onChange: async () => {

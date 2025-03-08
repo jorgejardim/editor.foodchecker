@@ -50,6 +50,8 @@ export const editorJsPtBR = {
         'Code': 'Código',
         'Raw HTML': 'HTML bruto',
         'InlineCode': 'Código inline',
+        'PlaceholderTool': 'Inserir Placeholder',
+        'ChangeCase': 'Mudar Caixa',
     },
     tools: {
         warning: {
@@ -154,6 +156,6 @@ export const editorJsPtBR = {
         "textColor": "Cor do texto",
         "indent": "Aumentar recuo",
         "unindent": "Diminuir recuo",
-        "convertTo": "Converter para"
+        "convertTo": "Converter para",
     }
 };
